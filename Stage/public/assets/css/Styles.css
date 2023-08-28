@@ -1,0 +1,21 @@
+.bg-gradient-primary {
+  background-color: #e33d34;
+  background-image: linear-gradient(180deg,#e78e45 10%,#eb3834);
+  background-size: cover;
+}
+
+.navbar-expand {
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  background: linear-gradient(90deg, #767676 10%,#515151);
+}
+
+.d-sm-flex.justify-content-between.align-items-center.mb-4 {
+}
+
+.dropdown-item.active, .dropdown-item:active {
+  color: #fff;
+  text-decoration: none;
+  background-color: #e33d34;
+}
+

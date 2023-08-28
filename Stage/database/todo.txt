@@ -1,0 +1,62 @@
+.on fait d'abord la fonction si le nombre de voiture qui n'est pas encore sortie est superieur ou egal a 9 a la date et heure de cette demande ..
+
+.si la place est libre 
+  on prend la date
+  et on fait la fonction pour voir le nombre de mecanicien libre a la date et heure demande par rapport au nombre de mecanicien requis 
+
+  si y a pas mecanicien libre .. on prend la date la plus proche ou il y aura un mecanicien libre par rapport a la date sortie du voiture 
+
+si la place n'est pas libre 
+  
+  ->on propose une autre date la plus proche par rapport a la date sortie du voiture la plus proche 
+  
+  ->on fait la fonction pour voir le nombre de mecanicien libre a la date et heure demande par rapport au nombre de mecanicien requis 
+
+---------------------------
+
+
+pour suggerer les dates et heures  on doit tenir compte de ces conditions 
+
+s'il y a de place libre et mecanicien libre a la date demandee entre l'intervalle date et datefin
+
+ on prend juste la date et datefin de la demande 
+
+mais sinon
+
+on prend d'abord l'heure estime pour la demande entre la date et datefin
+
+on doit prendre la datefin de voiture dans la table demande_sortie la plus proche par rapport a la date (date et heure) demande de la demande on prenant un peu de marge genre 30 mn pour faire sortie la voiture et a partir de ca on prend la date et heure de debut pour la suggestion et apres on rajoute a l'heure estime et ca donne la datefin .. pour la suggestion on doit bien tenir compte de l'heure genre de 8h a 18h sinon on change a une autre date 
+
+
+
+
+  public static function isRendezVousAvailable($iddemande) {
+            // Vérifiez s'il y a une place disponible pour l'iddemande donné
+            $isAvailablePlace = self::isAvailablePlace($iddemande);
+            // Vérifiez s'il y a un mécanicien disponible pour l'iddemande donné
+            $isAvalaibleMecanicien = self::isAvalaibleMecanicien($iddemande);
+            // Obtenez le nombre de mécaniciens disponibles
+            $availableMechanicsCount = self::availableMecanicien($iddemande);
+            // Construisez un message indiquant la disponibilité des places et des mécaniciens
+            $message = "Pour l'iddemande " . $iddemande . ", ";
+            if ($isAvailablePlace) {
+                $message .= "il y a une place disponible";
+            } else {
+                $message .= "il n'y a pas de place disponible";
+            }
+            $message .= " et ";
+            if ($isAvalaibleMecanicien) {
+                $message .= "il y a " . $availableMechanicsCount . " mécanicien(s) disponible(s)";
+            } else {
+                $message .= "il n'y a pas de mécanicien disponible";
+            }
+            $message .= ".";
+            return $message;
+        }
+        
+
+
+  
+
+
+     
